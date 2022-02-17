@@ -15,9 +15,20 @@ function expensesCalculation() {
     const totalMoneyExpenses = foodMoney + rentMoney + clothsMoney;
     const remaining = incomeMoney - totalMoneyExpenses;
 
-    totalExpenses.innerText = totalMoneyExpenses;
-    balance.innerText = remaining;
+
     // validation 
+    if (typeof (incomeMoney) != 'number'  ||  typeof (foodMoney) != 'number' || typeof (rentMoney) != 'number' || typeof (clothsMoney) != 'number') {
+        alert('This is Not a number, Insert Valid Numbers Only');
+    }
+    if(0 > incomeMoney || 0 > foodMoney || 0 > rentMoney || 0 > incomeMoney){
+        alert('This value is Negative, Insert Positive Number Only');
+    }
+    else {
+        totalExpenses.innerText = totalMoneyExpenses;
+        balance.innerText = remaining;
+    }
+
+
 
     /*     if (remaining > incomeMoney) {
             alert('your Expenses is Greater than Your Income, Earn more or be economical')
@@ -48,7 +59,24 @@ function savings() {
     const savings = (presentBalance * savingsPercentage) / 100;
 
     savingAmount.innerText = savings;
-    remainingBalance.innerText =  Number(income.value - (Number(balance.innerText) + savings));
-    console.log(presentBalance, savingsPercentage, savingAmount, savings)
+    const updateBalance = Number(income.value - (Number(balance.innerText) + savings))
+    //---------------Validation-----------
+    if (typeof (savingsPercentage) != 'number') {
+        alert("Enter Valid Number");
+    }
+    else if (0 > updateBalance) {
+        alert('You Have Insufficient Balance to Save, Earn more or be economical');
+    }
+    else if (updateBalance < Number(income.value)) {
+        remainingBalance.innerText = updateBalance;
+    }
+    else if (updateBalance > Number(income.value)) {
+        alert('You Have Insufficient Balance to Save');
+    }
+    else {
+        remainingBalance.innerText = updateBalance;
+    }
+
+    // console.log(presentBalance, savingsPercentage, savingAmount, savings)
 }
 
