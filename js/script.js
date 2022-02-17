@@ -1,3 +1,4 @@
+//Get Ids
 const income = document.getElementById('income-input');
 const food = document.getElementById('food-input');
 const rent = document.getElementById('rent-input');
@@ -17,15 +18,15 @@ function expensesCalculation() {
 
 
     // validation 
-    if (typeof (incomeMoney) != 'number'  ||  typeof (foodMoney) != 'number' || typeof (rentMoney) != 'number' || typeof (clothsMoney) != 'number') {
-        alert('This is Not a number, Insert Valid Numbers Only');
-    }
-    if(0 > incomeMoney || 0 > foodMoney || 0 > rentMoney || 0 > incomeMoney){
+    if (0 > incomeMoney || 0 > foodMoney || 0 > rentMoney || 0 > incomeMoney) {
         alert('This value is Negative, Insert Positive Number Only');
     }
-    else {
+    else if(typeof(incomeMoney) == "number") {
         totalExpenses.innerText = totalMoneyExpenses;
         balance.innerText = remaining;
+    }
+    if (typeof (income.value) != 'number' || typeof (food.value) != 'number' || typeof (rent.value) != 'number' || typeof (cloths.value) != 'number') {
+        alert('This is Not a number, Insert Valid Numbers Only');
     }
 
 
@@ -48,7 +49,7 @@ function expensesCalculation() {
      */
 
 }
-
+//Savings Percentage Section
 const saveInput = document.getElementById('save-input');
 const savingAmount = document.getElementById('saving-amount');
 const remainingBalance = document.getElementById('remaining-balance');
